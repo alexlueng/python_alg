@@ -59,7 +59,7 @@ def power(x, n):
         return 1
     return x * power(x, n-1)
 
-# 递归查找序列 S 的最大值
+# R4-1 递归查找序列 S 的最大值
 def recurse_max(S, n):
     if n == 1:
         return S[0]
@@ -68,6 +68,12 @@ def recurse_max(S, n):
         return m
     else:
         return S[n-1]
+
+# R4-10 只使用加法和整数除法，求n以2为底的对数的整数部分
+def log2(n):
+    if n < 2:
+        return 0
+    return 1 + log2(n / 2)
 
 if __name__ == '__main__':
     # print(factorial(5))
@@ -79,7 +85,8 @@ if __name__ == '__main__':
     # disk_usage('D:\courses')
     # print(reverse(data, 0, len(data)))
 
-    s = [1,5,4, 10,7,8,2]
-    m = recurse_max(s, 6)
+    # s = [1,5,4, 10,7,8,2]
+    # m = recurse_max(s, 6)
+    m = log2(1024)
     print(m)
     

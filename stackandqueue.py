@@ -49,7 +49,7 @@ def is_match_html(raw):
     return S.is_empty()
 
 
-def ArrayQueue:
+class ArrayQueue:
     """FIFO queue implementation useing a Python list as underlying storage."""
 
     DEFAULT_CAPACITY = 10

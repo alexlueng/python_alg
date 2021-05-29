@@ -23,7 +23,7 @@ class GameEntry:
         return self._score
 
     def __str__(self):
-        retunr '({0}, {1})'.format(self._name, self._score)
+        return '({0}, {1})'.format(self._name, self._score)
 
 
 class GameBoard:

@@ -18,7 +18,7 @@ class LinkedStack:
         return self._size
 
     def is_empty(self):
-        return self._size == 0
+        return self._size == 0 
 
     def push(self, e):
         self._head = self._Node(e, self._head)
@@ -261,7 +261,7 @@ class PositionalList(_DoublyLinkedBase):
 
     def __iter__(self):
         curor = self.first()
-        while curor in not None:
+        while curor is not None:
             yield curor.element()
             cursor = self.after(curor)
 
