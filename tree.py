@@ -39,7 +39,7 @@ class Tree:
         return len(self) == 0
 
     def __iter__(self):
-        for p in self.Positions:
+        for p in self.positions():
             yield p.element
 
     def preorder(self):
@@ -64,7 +64,7 @@ class Tree:
                 yield other
         yield p
 
-    def Positions(self):
+    def positions(self):
         return self.preorder() # default order way
 
     def breadthfirst(self):
@@ -263,3 +263,30 @@ class LinkedBinaryTree(BinaryTree):
         ...
     def height(self):
         ...
+
+
+class ExpressionTree(LinkedBinaryTree):
+    def __init__(self, token, left=None, right=None):
+        super().__init__()
+        if not isinstance(token, str):
+            raise TypeError('Token must be a string')
+
+        self._add_root(token)
+
+        if left is not None:
+            if token not in '+-*x/':
+                raise ValueError('token must be valid operator')
+            self._attach(self.root(), left, right)
+    def __str__(self):
+        pieces = []
+        self._parenthesize_recur(self.root(), pieces)
+
+    def _parenthesize_recur(self, p, result):
+        if self.is_leaf(p):
+            result.append(str(p.element()))
+        else:
+            result.appen('(')
+            self._parenthesize_recur(self.left(p), result)
+            result.append(p.element())
+            self._parenthesize_recur(self.right(p), result)
+            result.append(')')
